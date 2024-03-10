@@ -1,8 +1,8 @@
 package com.solomon.movieAPI.Service;
 
 import com.solomon.movieAPI.Model.Movies;
+import com.solomon.movieAPI.Model.Reviews;
 import com.solomon.movieAPI.Repository.MovieRepository;
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,5 +19,11 @@ public class MovieService {
 
     public Optional<Movies> singleMovie(String id){
         return movieRepository.findMovieByImdbId(id);
+    }
+
+    public Optional<List<Reviews>> extractReviewIds(String imdbId) {
+        Optional<Movies> movieOptional = singleMovie(imdbId);
+
+        return movieOptional.map(Movies::getReviewIds);
     }
 }

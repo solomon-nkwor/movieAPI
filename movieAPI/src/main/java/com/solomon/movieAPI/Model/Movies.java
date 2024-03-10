@@ -27,4 +27,10 @@ public class Movies {
     private List<String> backdrops;
     @DocumentReference
     private List<Reviews> reviewIds;
+
+
+    // this method extracts the reviewIds from the review document
+    public List<Reviews> getReviewIds() {
+        return reviewIds;
+    }
 }
